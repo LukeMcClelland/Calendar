@@ -1,0 +1,92 @@
+/*Code from https://webdevtrick.com/html-css-javascript-calendar/*/
+/*code from https://code-boxx.com/simple-pure-javascript-calendar-events/ */
+
+html, body, textarea, input{
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+#calendarDate {
+  margin: 10px;
+}
+#calendarMonth, #calendarYear, #calendar-set {
+  border: 0;
+  background: rgb(50, 163, 216);
+  padding: 10px;
+  font-size: 1.2em;
+  color: white;
+}
+
+#calendar tr.head td {
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #fff;
+  background: rgb(50, 163, 216);
+  padding: 20px;
+  text-align: center;
+}
+#page-body{
+  max-width: 1000px;
+}
+#calendar {
+  width: 100%;
+}
+#calendar tr.day td {
+  border: 1px solid #ddd;
+  width: 13%;
+  padding: 15px 5px;
+  vertical-align: top;
+}
+#calendar tr.day td:hover {
+  background: blue;
+}
+#calendar tr td.blank {
+  background: red;
+}
+#calEvent form {
+  padding: 5px;
+  margin-top: 5px;
+  background: rgb(50, 163, 216);
+  border: 1px solid #ddd;
+}
+#calendar .dd {
+  font-size: 1.2em;
+  color: #999;
+}
+#calEvent textarea {
+  display: block;
+  box-sizing: padding-box;
+  width: 90%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  resize: none;
+}
+#calEvent h1 {
+  color: #333;
+  padding: 0;
+  margin: 0;
+}
+#calendar .evt {
+  margin-top: 5px;
+  font-size: 0.8em;
+  font-weight: bold;
+  overflow: hidden;
+  color: rgb(50, 163, 216);
+}
+
+#evt-date {
+  color: #999;
+  margin: 10px 0;
+}
+.dark-mode{
+  background-color: black;
+  color: white;
+  }
+#calEvent input[type=button], #calEvent input[type=submit] {
+  padding: 10px;
+  margin: 5px;
+  font-size: 1.2em;
+  border: 0;
+  background:rgb(50, 163, 216);
+  color: #fff;
+}

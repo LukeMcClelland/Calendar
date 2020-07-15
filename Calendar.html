@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang = "en">
+
+<head>
+<meta charset = "UTF-8">
+<title> Calendar </title>
+<link rel = "stylesheet" href = "Calendar.css">
+</head>
+<body>
+<div>
+<h1>Month, Year</h1>
+<table>
+    <tr>
+        <th class="days"> Sunday </th>
+        <th class="days"> Monday </th> 
+        <th class="days"> Tuesday </th> 
+        <th class="days"> Wednesday </th> 
+        <th class="days"> Thursday </th> 
+        <th class="days"> Friday </th> 
+        <th class="days"> Saturday </th> 
+    </tr>
+    <form>
+    <label for = "months"> Jump to: </label>
+    <select name = "months" onchange = "updateCalendar()">
+    <option value = 0> January </option>
+    <option value = 1> Feburary </option>
+    <option value = 2> March </option>
+    <option value = 3> April </option>
+    <option value = 4> May </option>
+    <option value = 5> June </option>
+    <option value = 6> July </option>
+    <option value = 7> August </option>
+    <option value = 8> Semptember </option>
+    <option value = 9> October </option>
+    <option value = 10> November </option>
+    <option value = 11> December </option>
+    </select>
+
+    <label for "year"> </label>
+    <select name = "years">
+    <option value = 2010> 2010 </option>
+    <option value = 2011> 2011 </option>
+    <option value = 2012> 2012 </option>
+    </select>
+    </form>
+</table>
+<input type = "submit" id = "next_month_btn" value = "Next Month"></input>
+<input type = "submit" id = "next_year_btn" value = "Next Year" </input>
+
+<div class = "days">
+<div class = "day"> Sun </div>
+<div class = "day"> Mon </div>
+<div class = "day"> Tue </div>
+<div class = "day"> Wed </div>
+<div class = "day"> Thurs </div>
+<div class = "day"> Fri </div>
+<div class = "day"> Sat </div>
+</div>
+
+<script>
+let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+function drawMonths(){
+    for (let x = 0; x < months.length; x++){
+        let document = document.createElement("div");
+        document.innerHTML = months[x];
+        document.classList.add("dropdown-item");
+        document.onclick = (function ()){
+            var selectMonth = x;
+            return function (){
+                months = selectMonth;
+                document.getElementById("curMonth")document.innerHTML = months[months];
+                displayDays();
+                return months;
+            }
+        })();
+        document.getElementById("months").appendChild(document);
+    }
+}
+function drawYears(){
+    var minYear = 1900;
+    var maxYear = 2100;
+        for(let x = minYear; x <= maxYear; x++)
+        {
+            var document = document.createElement("div");
+            doc.innerHTML = x;
+            doc.classList.add("dropdown-item");
+
+            doc.onclick = (function(){
+                var selectedYear = x;
+                return function(){
+                    year = selectedYear;
+                    document.getElementById("curYear").innerHTML = year;
+                    displayDays();
+                    return year;
+                }
+            })();
+            document.getElementById("years").appendChild(doc);
+        }
+    }
+    
+</script>
+
+<script>
+// For our purposes, we can keep the current month in a variable in the global scope
+var curMonth = new Month(2017, 9); // October 2017
+
+// Change the month when the "next" button is pressed
+document.getElementById("next_month_btn").addEventListener("click", function(event){
+	curMonth = curMonth.nextMonth(); // Previous month would be currentMonth.prevMonth()
+	updateCalendar(); // Whenever the month is updated, we'll need to re-render the calendar in HTML
+	alert("The new month is "+curMonth.month+" "+curMonth.year);
+}, false);
+document.getElementById("next_year_btn").addEventListener("click", function(event){
+	curYear = curYear.nextYear(); // Previous month would be currentMonth.prevMonth()
+	updateCalendar(); // Whenever the month is updated, we'll need to re-render the calendar in HTML
+	alert("The new year is "+curYear.Year);
+}, false);
+
+
+// This updateCalendar() function only alerts the dates in the currently specified month.  You need to write
+// it to modify the DOM (optionally using jQuery) to display the days and weeks in the current month.
+function updateCalendar(){
+	var weeks = curMonth.getWeeks();
+	
+	for(var w in weeks){
+		var days = weeks[w].getDates();
+		// days contains normal JavaScript Date objects.
+		
+		alert("Week starting on "+days[0]);
+		
+		for(var d in days){
+			// You can see console.log() output in your JavaScript debugging tool, like Firebug,
+			// WebWit Inspector, or Dragonfly.
+			console.log(days[d].toISOString());
+		}
+	}
+}
+let presentDay = new Date();
+int curMonth = today.getMonth();
+let curYear = today.getYear();
+let selectedMonth = document.getElementById("year");
+let selectedYear = document.getElementById("month");
+let months = ("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+let monthYear = document.getElementById("monthYear");
+calendarDisplay(curMonth, curYear);
+
+let calTable = document.getElementById("calendar_body");
+function nextYear(){
+    curYear = (curMonth === 11) ? currentYear + 1: currentYear;
+    curMonth = (curMonth + 1) % 12;
+    calendarDisplay(curMonth, curtYear);
+}
+
+function previousYear(){
+    let currentYear = (currentMonth.year === 11) ? currentYear - 1;
+    calendarDisplay(currentMonth, currentYear);
+}
+
+</script>
+
+</div>
+</body>
+</html>
